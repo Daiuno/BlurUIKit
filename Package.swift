@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "BlurUIKit",
-    platforms: [.iOS(.v14)],
+    platforms: [.iOS(.v14), .tvOS("15.0")],
     products: [
         .library(
             name: "BlurUIKit",

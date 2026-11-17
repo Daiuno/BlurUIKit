@@ -69,11 +69,20 @@ public class VariableBlurView: UIVisualEffectView {
     }
 
     /// An optional colored gradient to dim the underlying content for better contrast.
-    public var dimmingTintColor: UIColor? = .systemBackground {
+    public var dimmingTintColor: UIColor? = VariableBlurView.defaultDimmingTintColor {
         didSet {
             makeDimmingViewIfNeeded()
             dimmingView?.tintColor = dimmingTintColor
         }
+    }
+
+    /// tvOS has no systemBackground.
+    private static var defaultDimmingTintColor: UIColor {
+        #if os(tvOS)
+        return .black
+        #else
+        return .systemBackground
+        #endif
     }
 
     /// The alpha value of the colored gradient
